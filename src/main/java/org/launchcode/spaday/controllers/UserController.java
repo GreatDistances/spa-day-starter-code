@@ -6,21 +6,26 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/user")
+@RequestMapping("user")
 public class UserController {
 
     // lives at /user/add
-    @GetMapping("/add")
+    @GetMapping("add")
     public String displayAddUserForm() {
         return "user/add";
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         // TODO add form submission handling code here
-        model.addAttribute("user", user);
-        model.addAttribute("pwd", verify);
-        return "user/index";
+        if (!user.getPassword().equals(verify)) {
+            model.addAttribute("error", "Passwords do not match!");
+            // model.addAttribute
+            // model.addAttribute
+            return "user/add";
+        } else {
+            return "user/index";
+        }
     }
 
 }

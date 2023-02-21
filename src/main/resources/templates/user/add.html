@@ -1,25 +1,30 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org/">
+<link th:href="@{/css/styles.css}" rel="stylesheet" />
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
-    <title>Title</title>
+    <title>Account Registration</title>
 </head>
 <body>
 
-<h1>Registration</h1>
+<h3>Account Registration</h3>
 
 <form method="post">
-    <label for="name">Name:
-        <input type="email" id="name" name="email">
+    <label for="username">Name:
+        <input type="text" id="username" name="username" th:value="${username}">
     </label><br>
-    <label for="name">Email:
-        <input type="text" id="email" name="email">
+    <label for="email">Email:
+        <input type="email" id="email" name="email" th:value="${email}">
     </label><br>
-    <label for="pwd">Password:
-    <input type="password" id="pwd" name="pwd"><br>
-        </label><br>
-    <input type="button" value="Submit">
+    <label for="password">Password:
+        <input type="password" id="password" name="password">
+    </label><br>
+    <label for="verify">Confirm Password:
+        <input type="password" id="verify" name="verify">
+    </label><br>
+    <input type="submit" value="Submit">
+    <p th:if="${error}" id="error" th:text="${error}"></p>
 </form>
 
 </body>
