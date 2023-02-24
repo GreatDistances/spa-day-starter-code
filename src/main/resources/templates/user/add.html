@@ -5,21 +5,24 @@
     <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
     <title>Sign Up</title>
 </head>
+
+
+
 <body>
     <form method = 'post' th:action="@{/user}">
         <label>
             Username:
-            <input type = 'text' name = 'username' th:value="${username}">
+            <input type = 'text' name = 'username' th:value="${user.username}">
         </label>
 
         <label>
             Email:
-            <input type = 'email' name = 'email' th:value="${email}">
+            <input type = 'text' name = 'email' th:value="${user.email}">
         </label>
 
         <label>
             Password:
-            <input type = 'password' name = 'password'>
+            <input type = 'password' name = 'password' th:value="${user.password}">
         </label>
 
         <label>
@@ -27,6 +30,9 @@
             <input type = 'password' name = 'verify'>
         </label>
 
+        <p th:errors="${user.username}"></p>
+        <p th:errors="${user.email}"></p>
+        <p th:errors="${user.password}"></p>
         <p th:text="${error}"></p>
 
         <input type = 'submit' value = 'Sign Up'>
